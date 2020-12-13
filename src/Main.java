@@ -8,9 +8,9 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("modifyParts.fxml"));
         stage.setTitle("Inventory Manager");
-        stage.setScene(new Scene(root,900,650 ));
+        stage.setScene(new Scene(root,400,400 ));
         stage.show();
     }
 

@@ -6,15 +6,14 @@
 <?import javafx.scene.text.*?>
 
 <!--Create BorderPane for form-->
-<BorderPane prefHeight="400.0" prefWidth="600.0" fx:controller="Controller" xmlns:fx="http://javafx.com/fxml"
+<BorderPane prefHeight="650.0" prefWidth="900.0" fx:controller="Controller" xmlns:fx="http://javafx.com/fxml"
 stylesheets="style.css">
 
    <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
     <top>
         <!--Form Label-->
-        <Label text="Inventory Management System" fx:id="firstLabel"
-               GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Label text="Inventory Management System" fx:id="formLabel">
 
             <padding><Insets bottom="15" /></padding>
 

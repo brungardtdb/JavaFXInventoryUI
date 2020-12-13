@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.net.*?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="AddPartController"
+            prefHeight="400.0" prefWidth="400.0"
+            stylesheets="style.css">
+
+    <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+
+    <top>
+        <VBox alignment="CENTER">
+            <!--Form Label-->
+            <Label text="Add Part" fx:id="addPartsLabel">
+                <padding><Insets bottom="15" /></padding>
+            </Label>
+
+            <!--Option for in-house parts-->
+            <HBox spacing="10" alignment="CENTER">
+                <RadioButton text="In-House" fx:id="isInHouse">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="partOutsourced"/>
+                    </toggleGroup>
+                </RadioButton>
+
+                <!--Option for outsourced parts-->
+                <RadioButton text="Outsourced" fx:id="isOutsourced">
+                    <toggleGroup>
+                        <fx:reference source ="partOutsourced"/>
+                    </toggleGroup>
+                </RadioButton>
+            </HBox>
+        </VBox>
+
+    </top>
+
+    <center>
+        <!--Grid pane holds options for creating parts-->
+        <GridPane alignment="TOP_CENTER">
+            <padding><Insets top="15" right="15" bottom="15"/></padding>
+
+            <!--ID-->
+            <Label text="ID" fx:id="idLabel"
+            GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <padding><Insets top="15" right="15"/></padding>
+            </Label>
+
+            <TextField text="Auto Gen - Disabled"
+            GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="idTxt" disable="true"/>
+
+            <!--Name-->
+            <Label text="Name" fx:id="nameLabel"
+                   GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <padding><Insets top="15" right="15"/></padding>
+            </Label>
+
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" fx:id="nameTxt"/>
+
+            <!--Inv (inventory?)-->
+            <Label text="Inv" fx:id="inventoryLabel"
+                   GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <padding><Insets top="15" right="15"/></padding>
+            </Label>
+
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" fx:id="inventoryTxt"/>
+
+            <!--Price/Cost-->
+            <Label text="Price/Cost" fx:id="priceCostLabel"
+                   GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <padding><Insets top="15" right="15"/></padding>
+            </Label>
+
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="4" fx:id="priceCostTxt"/>
+
+            <!--Min-->
+            <Label text="Min" fx:id="minLabel"
+                   GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <padding><Insets top="15" right="15"/></padding>
+            </Label>
+
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="5" fx:id="minTxt"/>
+
+            <!--Max-->
+            <Label text="Max" fx:id="maxLabel"
+                   GridPane.columnIndex="1" GridPane.rowIndex="6">
+                <padding><Insets top="15" right="15"/></padding>
+            </Label>
+
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="6" fx:id="maxTxt"/>
+
+            <!--Machine ID/Company Name-->
+            <Label text="{Placeholder}" fx:id="variableLabel"
+                   GridPane.columnIndex="1" GridPane.rowIndex="7">
+                <padding><Insets top="15" right="15"/></padding>
+            </Label>
+
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="7" fx:id="variableTxt"/>
+
+        </GridPane>
+    </center>
+
+    <bottom>
+        <!--Save Button-->
+        <HBox spacing="10" alignment="TOP_CENTER">
+            <Button text="Save" fx:id="savePart" onAction="#handleSavePart">
+                <padding><Insets top="5" left="5" bottom="5" right="5"/></padding>
+            </Button>
+
+            <!--Modify Button-->
+            <Button text="Cancel" fx:id="cancelPart" onAction="#handleCancelPart">
+                <padding><Insets top="5" left="5" bottom="5" right="5"/></padding>
+            </Button>
+        </HBox>
+    </bottom>
+
+</BorderPane>
