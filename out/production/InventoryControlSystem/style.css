@@ -1,0 +1,26 @@
+.root{
+    -fx-background-color: #383838;
+    -fx-font-size: 10pt;
+}
+
+.label{
+    -fx-text-fill: #ffffff;
+    -fx-text-size: 12pt;
+    -fx-font-weight: bold;
+}
+
+.button{
+    -fx-background-color: #808080;
+    -fx-text-fill: #ffffff;
+}
+
+.pane{
+    -fx-border-color: #ffffff;
+    -fx-border-width: 5;
+    -fx-border-style: solid;
+}
+
+.tableView .tableColumn {
+    -fx-text-fill: #ffffff;
+}
+
