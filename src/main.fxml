@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <!--Create BorderPane for form-->
-<BorderPane prefHeight="650.0" prefWidth="900.0" fx:controller="Controller" xmlns:fx="http://javafx.com/fxml"
+<BorderPane prefHeight="900.0" prefWidth="650.0" fx:controller="Controller" xmlns:fx="http://javafx.com/fxml"
 stylesheets="style.css">
 
    <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
@@ -51,7 +51,6 @@ stylesheets="style.css">
                         </Button>
 
                     </HBox>
-
                     <!-- HBox for parts table -->
                     <HBox alignment="CENTER">
                         <padding><Insets left="20" /></padding>
@@ -68,7 +67,6 @@ stylesheets="style.css">
 
                     <!-- HBox for add/modify/delete -->
                     <HBox spacing="10" alignment="BOTTOM_RIGHT">
-
                         <padding><Insets left = "5" top="15" right = "5" bottom="5"/></padding>
 
                         <Button text="Add" fx:id="addParts" onAction="#handleAddParts">
@@ -146,7 +144,6 @@ stylesheets="style.css">
                     </HBox>
                 </VBox>
             </Pane>
-
         </HBox>
     </center>
 
@@ -155,7 +152,6 @@ stylesheets="style.css">
             <Button text="Exit" fx:id="exitForm" onAction="#handleExitForm" BorderPane.alignment="BOTTOM_RIGHT">
                 <padding><Insets top="5" left="5" bottom="5" right="5"/></padding>
             </Button>
-
     </bottom>
 
 </BorderPane>
