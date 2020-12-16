@@ -13,7 +13,7 @@ public class InHouse extends Part
     }
 
     /**
-     * @param machineId the machine id to set for the in-house part.
+     * @param machineId the machine id to set for the in-house part
      */
     public void setMachineId(int machineId)
     {

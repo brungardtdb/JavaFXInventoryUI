@@ -12,7 +12,7 @@ public class Outsourced extends Part
     }
 
     /**
-     * @param companyName the name of the company we are outsourcing the part to.
+     * @param companyName the name of the company we are outsourcing the part to
      */
     public void setCompanyName(String companyName)
     {
@@ -20,7 +20,7 @@ public class Outsourced extends Part
     }
 
     /**
-     * @return the name of the company we are outsourcing the part to.
+     * @return the name of the company we are outsourcing the part to
      */
     public String getCompanyName()
     {
