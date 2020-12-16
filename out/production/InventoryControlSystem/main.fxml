@@ -37,7 +37,7 @@ stylesheets="style.css">
                 <VBox>
 
                     <!-- HBox for label and search bar -->
-                    <HBox alignment="CENTER">
+                    <HBox alignment="CENTER" spacing="10">
                         <padding><Insets bottom="15" top="15"/></padding>
 
                         <Label text="Parts" fx:id="partLabel">
@@ -95,7 +95,7 @@ stylesheets="style.css">
                 <!-- VBox that will hold labels, buttons, and tables for products -->
                 <VBox>
                     <!-- HBox for label and search bar -->
-                    <HBox alignment="CENTER">
+                    <HBox alignment="CENTER" spacing="10">
                         <padding><Insets bottom="15" top="15"/></padding>
 
                         <Label text="Products" fx:id="productLabel">
