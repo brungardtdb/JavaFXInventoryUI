@@ -1,6 +1,10 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ *
+ * @author David Brungardt
+ */
 public class Inventory {
 
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
@@ -159,9 +163,5 @@ public class Inventory {
     {
         return allProducts;
     }
-
-
-
-
 }
 
