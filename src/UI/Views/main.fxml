@@ -13,7 +13,7 @@
 
     <top>
         <!--Form Label-->
-        <Label text="InventoryAPI.Inventory Management System" fx:id="formLabel">
+        <Label text="Inventory Management System" fx:id="formLabel">
 
             <padding><Insets bottom="15" /></padding>
 
@@ -44,7 +44,7 @@
                             <padding><Insets right="20"/></padding>
                         </Label>
 
-                        <TextField text="Search by InventoryAPI.Part ID or Name"/>
+                        <TextField promptText="Search by ID or Name" fx:id="partSearchTextField" focusTraversable="false"/>
 
                         <Button text="Search" fx:id="searchPart" onAction="#handleSearchParts">
                             <padding><Insets top="5" left="5" bottom="5" right="5"/></padding>
@@ -57,9 +57,9 @@
                         <TableView style="-fx-background-color: #808080;">
 
                             <columns >
-                                <TableColumn text="InventoryAPI.Part ID" style="-fx-background-color: #202020;"/>
-                                <TableColumn text="InventoryAPI.Part Name" style="-fx-background-color: #202020;"/>
-                                <TableColumn text="InventoryAPI.Inventory Level" style="-fx-background-color: #202020;"/>
+                                <TableColumn text="Part ID" style="-fx-background-color: #202020;"/>
+                                <TableColumn text="Part Name" style="-fx-background-color: #202020;"/>
+                                <TableColumn text="Inventory Level" style="-fx-background-color: #202020;"/>
                                 <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;"/>
                             </columns>
                         </TableView>
@@ -102,7 +102,7 @@
                             <padding><Insets right="20"/></padding>
                         </Label>
 
-                        <TextField text="Search by InventoryAPI.Product ID or Name"/>
+                        <TextField promptText="Search by ID or Name" fx:id="productSearchTextField" focusTraversable="false"/>
 
                         <Button text="Search" fx:id="searchProduct" onAction="#handleSearchProducts">
                             <padding><Insets top="5" left="5" bottom="5" right="5"/></padding>
@@ -115,9 +115,9 @@
 
                         <TableView style="-fx-background-color: #808080;">
                             <columns>
-                                <TableColumn text="InventoryAPI.Product ID" style="-fx-background-color: #202020;"/>
-                                <TableColumn text="InventoryAPI.Product Name" style="-fx-background-color: #202020;"/>
-                                <TableColumn text="InventoryAPI.Inventory Level" style="-fx-background-color: #202020;"/>
+                                <TableColumn text="Product ID" style="-fx-background-color: #202020;"/>
+                                <TableColumn text="Product Name" style="-fx-background-color: #202020;"/>
+                                <TableColumn text="Inventory Level" style="-fx-background-color: #202020;"/>
                                 <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;"/>
                             </columns>
                         </TableView>
@@ -155,11 +155,3 @@
     </bottom>
 
 </BorderPane>
-
-        <!-- notes, remember to delete later? -->
-
-        <!--<Label text="${firstLabel.text}"
-       GridPane.columnIndex="1" GridPane.rowIndex="2"/>-->
-
-        <!--<Button text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="6"
-                fx:id="button" onAction="#handleButtonClick"/>-->

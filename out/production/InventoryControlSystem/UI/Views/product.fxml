@@ -8,14 +8,14 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="UI.Controllers.ProductController"
-            prefHeight="700.0" prefWidth="650.0"
+            prefHeight="650.0" prefWidth="900"
             stylesheets="/UI/style.css">
 
     <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
     <top>
         <!--Form Label-->
-        <Label text="Add InventoryAPI.Product" fx:id="addProductLabel">
+        <Label fx:id="addProductLabel">
             <padding><Insets bottom="15" /></padding>
         </Label>
     </top>
@@ -88,7 +88,7 @@
                 <HBox spacing="10">
                     <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
-                    <TextField text="Search by InventoryAPI.Part ID or Name" alignment="TOP_RIGHT"/>
+                    <TextField promptText="Search by ID or Name" alignment="TOP_RIGHT"/>
 
                     <Button text="Search" fx:id="searchProduct" onAction="#handleSearchProducts" alignment="TOP_RIGHT">
                     </Button>
@@ -133,7 +133,7 @@
                 <HBox spacing="10">
                     <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
-                    <Button text="Remove Associated InventoryAPI.Part" fx:id="removeAssociatedPart" onAction="#handleRemoveAssociatedPart" alignment="CENTER">
+                    <Button text="Remove Associated Part" fx:id="removeAssociatedPart" onAction="#handleRemoveAssociatedPart" alignment="CENTER">
                         <padding><Insets top="5" right="5" bottom="5" left="5"/></padding>
                     </Button>
 

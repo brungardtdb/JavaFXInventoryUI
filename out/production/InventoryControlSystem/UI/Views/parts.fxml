@@ -17,20 +17,20 @@
     <top>
         <VBox alignment="CENTER">
             <!--Form Label-->
-            <Label text="Add InventoryAPI.Part" fx:id="addPartsLabel">
+            <Label  fx:id="addPartsLabel">
                 <padding><Insets bottom="15" /></padding>
             </Label>
 
             <!--Option for in-house parts-->
             <HBox spacing="10" alignment="CENTER">
-                <RadioButton text="In-House" fx:id="isInHouse">
+                <RadioButton text="In-House" fx:id="isInHouse" onAction="#inHouseChecked" selected="true">
                     <toggleGroup>
                         <ToggleGroup fx:id="partOutsourced"/>
                     </toggleGroup>
                 </RadioButton>
 
                 <!--Option for outsourced parts-->
-                <RadioButton text="InventoryAPI.Outsourced" fx:id="isOutsourced">
+                <RadioButton text="Outsourced" fx:id="isOutsourced" onAction="#outsourcedChecked">
                     <toggleGroup>
                         <fx:reference source ="partOutsourced"/>
                     </toggleGroup>
@@ -95,7 +95,7 @@
             <TextField GridPane.columnIndex="2" GridPane.rowIndex="6" fx:id="maxTxt"/>
 
             <!--Machine ID/Company Name-->
-            <Label text="{Placeholder}" fx:id="variableLabel"
+            <Label  fx:id="variableLabel"
                    GridPane.columnIndex="1" GridPane.rowIndex="7">
                 <padding><Insets top="15" right="15"/></padding>
             </Label>
