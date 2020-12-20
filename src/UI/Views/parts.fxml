@@ -51,8 +51,7 @@
                 <padding><Insets top="15" right="15"/></padding>
             </Label>
 
-            <TextField text="Auto Gen - Disabled"
-            GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="idTxt" disable="true"/>
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="idTxt" disable="true"/>
 
             <!--Name-->
             <Label text="Name" fx:id="nameLabel"
@@ -112,7 +111,7 @@
                 <padding><Insets top="5" left="5" bottom="5" right="5"/></padding>
             </Button>
 
-            <!--Modify Button-->
+            <!--Cancel Button-->
             <Button text="Cancel" fx:id="cancelPart" onAction="#handleCancelPart">
                 <padding><Insets top="5" left="5" bottom="5" right="5"/></padding>
             </Button>

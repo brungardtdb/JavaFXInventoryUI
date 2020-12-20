@@ -24,6 +24,10 @@
     -fx-text-fill: #ffffff;
 }
 
+.table-view .table-cell{
+    -fx-text-fill: #ffffff;
+}
+
 .radio-button {
     -fx-text-fill: #ffffff;
 }

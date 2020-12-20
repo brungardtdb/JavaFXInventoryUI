@@ -1,13 +1,26 @@
 package UI.Controllers;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import InventoryAPI.Inventory;
+import javafx.stage.Stage;
+import javax.print.CancelablePrintJob;
 
+/**
+ *
+ * @author David Brungardt
+ */
 public class ProductController {
 
+    private Inventory inventory;
     private static boolean modifyProducts;
     @FXML private Label addProductLabel;
+    @FXML private  Button cancelProduct;
+
+    public void setInventory(Inventory inventory)
+    {
+        this.inventory = inventory;
+    }
 
     public void handleSearchProducts()
     {
@@ -29,9 +42,10 @@ public class ProductController {
 
     }
 
-    public void handleCancel()
+    @FXML void handleCancel()
     {
-
+        Stage stage = (Stage) cancelProduct.getScene().getWindow();
+        stage.close();
     }
 
     public void setModifyProducts(boolean modifyProducts)

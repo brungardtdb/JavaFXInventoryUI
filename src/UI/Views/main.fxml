@@ -54,13 +54,13 @@
                     <!-- HBox for parts table -->
                     <HBox alignment="CENTER">
                         <padding><Insets left="20" /></padding>
-                        <TableView style="-fx-background-color: #808080;">
+                        <TableView style="-fx-background-color: #808080;" fx:id="partTable">
 
                             <columns >
-                                <TableColumn text="Part ID" style="-fx-background-color: #202020;"/>
-                                <TableColumn text="Part Name" style="-fx-background-color: #202020;"/>
-                                <TableColumn text="Inventory Level" style="-fx-background-color: #202020;"/>
-                                <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;"/>
+                                <TableColumn fx:id="partIDColumn" text="Part ID" style="-fx-background-color: #202020;"/>
+                                <TableColumn fx:id="partNameColumn" text="Part Name" style="-fx-background-color: #202020;"/>
+                                <TableColumn fx:id="partInventoryColumn" text="Inventory Level" style="-fx-background-color: #202020;"/>
+                                <TableColumn fx:id="partCostColumn" text="Price/ Cost per Unit" style="-fx-background-color: #202020;"/>
                             </columns>
                         </TableView>
                     </HBox>
