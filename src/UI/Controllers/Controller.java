@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,6 +29,7 @@ public class Controller {
     @FXML private  TableColumn partNameColumn;
     @FXML private TableColumn partInventoryColumn;
     @FXML private TableColumn partCostColumn;
+    @FXML private BorderPane mainBorderPane;
 
 
     public void handleAddParts()
@@ -92,7 +94,19 @@ public class Controller {
 
     public void handleDeleteParts()
     {
+        Part partToDelete = getPartToModify();
 
+        if (partToDelete != null) {
+            inventory.deletePart(partToDelete);
+            updateParts();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Input Invalid");
+            alert.setHeaderText("No part was selected!");
+            alert.setContentText("Please select a part to delete from the part table!");
+            alert.show();
+        }
     }
 
     public void handleAddProducts()
@@ -140,8 +154,7 @@ public class Controller {
         }
     }
 
-    public void handleDeleteProducts()
-    {
+    public void handleDeleteProducts() {
 
     }
 

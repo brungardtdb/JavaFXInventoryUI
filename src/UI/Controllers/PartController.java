@@ -95,7 +95,7 @@ public class PartController {
                     this.inventory.updatePart(this.partIndex, this.returnPart);
                 }
                 else {
-                    this.returnPart = new Outsourced(partID, partName, partCost, partStock, partMin, partMax, partCompanyName);
+                    this.returnPart = new Outsourced(this.partToModify.getId(), partName, partCost, partStock, partMin, partMax, partCompanyName);
                     this.inventory.updatePart(this.partIndex, this.returnPart);
                 }
             }

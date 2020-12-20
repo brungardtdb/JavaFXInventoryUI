@@ -7,7 +7,7 @@
 
 <!--Create BorderPane for form-->
 <BorderPane prefHeight="900.0" prefWidth="650.0" fx:controller="UI.Controllers.Controller" xmlns:fx="http://javafx.com/fxml"
-            stylesheets="/UI/style.css">
+            stylesheets="/UI/style.css" fx:id="mainBorderPane">
 
    <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 

@@ -98,10 +98,10 @@
                 <HBox>
                     <TableView style="-fx-background-color: #808080;">
 
-                        <columns >
-                            <TableColumn text="InventoryAPI.Part ID" style="-fx-background-color: #202020;"/>
-                            <TableColumn text="InventoryAPI.Part Name" style="-fx-background-color: #202020;"/>
-                            <TableColumn text="InventoryAPI.Inventory Level" style="-fx-background-color: #202020;"/>
+                        <columns>
+                            <TableColumn text="Part ID" style="-fx-background-color: #202020;"/>
+                            <TableColumn text="Part Name" style="-fx-background-color: #202020;"/>
+                            <TableColumn text="Inventory Level" style="-fx-background-color: #202020;"/>
                             <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;"/>
                         </columns>
                     </TableView>
@@ -121,9 +121,9 @@
                     <TableView style="-fx-background-color: #808080;">
 
                         <columns >
-                            <TableColumn text="InventoryAPI.Part ID" style="-fx-background-color: #202020;"/>
-                            <TableColumn text="InventoryAPI.Part Name" style="-fx-background-color: #202020;"/>
-                            <TableColumn text="InventoryAPI.Inventory Level" style="-fx-background-color: #202020;"/>
+                            <TableColumn text="Part ID" style="-fx-background-color: #202020;"/>
+                            <TableColumn text="Part Name" style="-fx-background-color: #202020;"/>
+                            <TableColumn text="Inventory Level" style="-fx-background-color: #202020;"/>
                             <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;"/>
                         </columns>
                     </TableView>
