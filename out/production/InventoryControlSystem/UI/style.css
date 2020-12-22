@@ -1,6 +1,7 @@
 .root{
     -fx-background-color: #383838;
     -fx-font-size: 10pt;
+    -fx-text-fill: #ffffff;
 }
 
 .label{
@@ -20,6 +21,10 @@
     -fx-border-style: solid;
 }
 
+.tableView {
+    -fx-text-fill: #ffffff;
+}
+
 .tableView .tableColumn {
     -fx-text-fill: #ffffff;
 }
@@ -27,6 +32,26 @@
 .table-view .table-cell{
     -fx-text-fill: #ffffff;
 }
+
+.table-row-cell{
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #202020;
+}
+
+.table-row-cell:selected {
+   -fx-background-color: #808080;
+   -fx-border-color: #808080;
+}
+
+.table-row-cell: .text {
+   -fx-background-color: #ffffff;
+   -fx-border-color: #808080;
+}
+
+.table-row-cell:selected .text {
+       -fx-fill: #D349DF ;
+}
+
 
 .radio-button {
     -fx-text-fill: #ffffff;

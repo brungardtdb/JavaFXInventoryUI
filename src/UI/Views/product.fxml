@@ -88,21 +88,21 @@
                 <HBox spacing="10">
                     <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
-                    <TextField promptText="Search by ID or Name" alignment="TOP_RIGHT"/>
+                    <TextField promptText="Search by ID or Name" alignment="TOP_RIGHT" fx:id="partSearchTextField"/>
 
-                    <Button text="Search" fx:id="searchProduct" onAction="#handleSearchProducts" alignment="TOP_RIGHT">
+                    <Button text="Search" fx:id="searchProduct" onAction="#handleSearchParts" alignment="TOP_RIGHT">
                     </Button>
                 </HBox>
 
                 <!--InventoryAPI.Part Table to choose from-->
                 <HBox>
-                    <TableView style="-fx-background-color: #808080;">
+                    <TableView style="-fx-background-color: #808080;" fx:id="partTable">
 
                         <columns>
-                            <TableColumn text="Part ID" style="-fx-background-color: #202020;"/>
-                            <TableColumn text="Part Name" style="-fx-background-color: #202020;"/>
-                            <TableColumn text="Inventory Level" style="-fx-background-color: #202020;"/>
-                            <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;"/>
+                            <TableColumn text="Part ID" style="-fx-background-color: #202020;" fx:id="partIDColumn"/>
+                            <TableColumn text="Part Name" style="-fx-background-color: #202020;" fx:id="partNameColumn"/>
+                            <TableColumn text="Inventory Level" style="-fx-background-color: #202020;" fx:id="partInventoryColumn"/>
+                            <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;" fx:id="partCostColumn"/>
                         </columns>
                     </TableView>
                 </HBox>
@@ -118,13 +118,13 @@
 
                 <!--InventoryAPI.Part Table to with associated data-->
                 <HBox>
-                    <TableView style="-fx-background-color: #808080;">
+                    <TableView style="-fx-background-color: #808080;" fx:id="productPartTable">
 
                         <columns >
-                            <TableColumn text="Part ID" style="-fx-background-color: #202020;"/>
-                            <TableColumn text="Part Name" style="-fx-background-color: #202020;"/>
-                            <TableColumn text="Inventory Level" style="-fx-background-color: #202020;"/>
-                            <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;"/>
+                            <TableColumn text="Part ID" style="-fx-background-color: #202020;" fx:id="productPartIDColumn"/>
+                            <TableColumn text="Part Name" style="-fx-background-color: #202020;" fx:id="productPartNameColumn"/>
+                            <TableColumn text="Inventory Level" style="-fx-background-color: #202020;" fx:id="productPartInventoryColumn"/>
+                            <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;" fx:id="productPartCostColumn"/>
                         </columns>
                     </TableView>
                 </HBox>

@@ -113,7 +113,7 @@
                     <HBox alignment="CENTER">
                         <padding><Insets left="20" /></padding>
 
-                        <TableView style="-fx-background-color: #808080;">
+                        <TableView style="-fx-background-color: #808080;" fx:id="productTable">
                             <columns>
                                 <TableColumn text="Product ID" style="-fx-background-color: #202020;"/>
                                 <TableColumn text="Product Name" style="-fx-background-color: #202020;"/>

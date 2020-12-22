@@ -2,6 +2,7 @@ package UI.Controllers;
 
 import InventoryAPI.Inventory;
 import InventoryAPI.Part;
+import InventoryAPI.Product;
 import com.sun.jdi.PrimitiveValue;
 import com.sun.scenario.effect.impl.prism.PrRenderInfo;
 import javafx.collections.ListChangeListener;
@@ -30,6 +31,7 @@ public class Controller {
     @FXML private TableColumn partInventoryColumn;
     @FXML private TableColumn partCostColumn;
     @FXML private BorderPane mainBorderPane;
+    @FXML private TextField partSearchTextField;
 
 
     public void handleAddParts()
@@ -119,6 +121,10 @@ public class Controller {
             // Get controller so we can define if we are adding or modifying parts
             ProductController productController = fxmlLoader.getController();
             productController.setModifyProducts(false);
+            productController.setInventory(inventory);
+            productController.setHomeController(this);
+            productController.updateParts();
+
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -141,7 +147,11 @@ public class Controller {
 
             // Get controller so we can define if we are adding or modifying parts
             ProductController productController = fxmlLoader.getController();
-            productController.setModifyProducts(true);
+            productController.setModifyProducts(false);
+            productController.setInventory(inventory);
+            productController.setHomeController(this);
+            productController.updateParts();
+
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -166,7 +176,23 @@ public class Controller {
 
     public void handleSearchParts()
     {
-
+        int searchPartID;
+        Part searchedPart;
+        ObservableList<Part> searchedParts;
+        if (!partSearchTextField.getText().isEmpty())
+        {
+            try {
+                searchPartID = Integer.parseInt(partSearchTextField.getText());
+                searchedPart = this.inventory.lookupPart(searchPartID);
+                partTable.getSelectionModel().select(searchedPart);
+            } catch (Exception e) {
+                searchedParts = this.inventory.lookupPart(partSearchTextField.getText());
+                searchedParts.forEach((part -> {
+                    partTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+                    partTable.getSelectionModel().select(part);
+                }));
+            }
+        }
     }
 
     public void handleSearchProducts()
@@ -190,8 +216,20 @@ public class Controller {
     {
         if (partTable.getSelectionModel().getSelectedItem() != null)
         {
-           return ((Part) partTable.getSelectionModel().getSelectedItem());
+            return ((Part) partTable.getSelectionModel().getSelectedItem());
         }
         return  null;
     }
+
+    public void updateProducts()
+    {
+
+    }
+
+    public Product getProductToModify()
+    {
+        return null;
+    }
+
+
 }
