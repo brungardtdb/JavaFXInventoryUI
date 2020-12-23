@@ -30,11 +30,13 @@
 }
 
 .table-view .table-cell{
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
 }
 
 .table-row-cell{
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
     -fx-border-color: #202020;
 }
 
@@ -44,7 +46,8 @@
 }
 
 .table-row-cell: .text {
-   -fx-background-color: #ffffff;
+   -fx-background-color: #000000;
+   -fx-font-weight: bold;
    -fx-border-color: #808080;
 }
 

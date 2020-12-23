@@ -6,8 +6,13 @@
 <?import javafx.scene.text.*?>
 
 <!--Create BorderPane for form-->
-<BorderPane prefHeight="900.0" prefWidth="650.0" fx:controller="UI.Controllers.Controller" xmlns:fx="http://javafx.com/fxml"
-            stylesheets="/UI/style.css" fx:id="mainBorderPane">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="UI.Controllers.Controller"
+            prefHeight="900.0" prefWidth="650.0"
+            stylesheets="/UI/style.css"
+            fx:id="mainBorderPane"
+            onMouseClicked="#mainFormClicked">
 
    <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
@@ -57,10 +62,10 @@
                         <TableView style="-fx-background-color: #808080;" fx:id="partTable">
 
                             <columns >
-                                <TableColumn fx:id="partIDColumn" text="Part ID" style="-fx-background-color: #202020;"/>
-                                <TableColumn fx:id="partNameColumn" text="Part Name" style="-fx-background-color: #202020;"/>
-                                <TableColumn fx:id="partInventoryColumn" text="Inventory Level" style="-fx-background-color: #202020;"/>
-                                <TableColumn fx:id="partCostColumn" text="Price/ Cost per Unit" style="-fx-background-color: #202020;"/>
+                                <TableColumn fx:id="partIDColumn" text="Part ID" style="-fx-background-color: #545454;"/>
+                                <TableColumn fx:id="partNameColumn" text="Part Name" style="-fx-background-color: #545454;"/>
+                                <TableColumn fx:id="partInventoryColumn" text="Inventory Level" style="-fx-background-color: #545454;"/>
+                                <TableColumn fx:id="partCostColumn" text="Price/ Cost per Unit" style="-fx-background-color: #545454;"/>
                             </columns>
                         </TableView>
                     </HBox>
@@ -115,10 +120,10 @@
 
                         <TableView style="-fx-background-color: #808080;" fx:id="productTable">
                             <columns>
-                                <TableColumn text="Product ID" style="-fx-background-color: #202020;"/>
-                                <TableColumn text="Product Name" style="-fx-background-color: #202020;"/>
-                                <TableColumn text="Inventory Level" style="-fx-background-color: #202020;"/>
-                                <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;"/>
+                                <TableColumn fx:id="productIDColumn" text="Product ID" style="-fx-background-color: #545454;"/>
+                                <TableColumn fx:id="productNameColumn" text="Product Name" style="-fx-background-color: #545454;"/>
+                                <TableColumn fx:id="productInventoryColumn" text="Inventory Level" style="-fx-background-color: #545454;"/>
+                                <TableColumn fx:id="productPriceColumn" text="Price/ Cost per Unit" style="-fx-background-color: #545454;"/>
                             </columns>
                         </TableView>
 

@@ -9,7 +9,8 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="UI.Controllers.ProductController"
             prefHeight="650.0" prefWidth="900"
-            stylesheets="/UI/style.css">
+            stylesheets="/UI/style.css"
+            onMouseClicked="#handleOnMouseClicked">
 
     <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
@@ -35,8 +36,7 @@
                     <padding><Insets top="15" right="15"/></padding>
                 </Label>
 
-                <TextField text="Auto Gen - Disabled"
-                           GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="idTxt" disable="true"/>
+                <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="idTxt" disable="true"/>
 
                 <!--Name-->
                 <Label text="Name" fx:id="nameLabel"
@@ -99,10 +99,10 @@
                     <TableView style="-fx-background-color: #808080;" fx:id="partTable">
 
                         <columns>
-                            <TableColumn text="Part ID" style="-fx-background-color: #202020;" fx:id="partIDColumn"/>
-                            <TableColumn text="Part Name" style="-fx-background-color: #202020;" fx:id="partNameColumn"/>
-                            <TableColumn text="Inventory Level" style="-fx-background-color: #202020;" fx:id="partInventoryColumn"/>
-                            <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;" fx:id="partCostColumn"/>
+                            <TableColumn text="Part ID" style="-fx-background-color: #545454;" fx:id="partIDColumn"/>
+                            <TableColumn text="Part Name" style="-fx-background-color: #545454;" fx:id="partNameColumn"/>
+                            <TableColumn text="Inventory Level" style="-fx-background-color: #545454;" fx:id="partInventoryColumn"/>
+                            <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #545454;" fx:id="partCostColumn"/>
                         </columns>
                     </TableView>
                 </HBox>
@@ -111,7 +111,7 @@
                 <HBox>
                     <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
-                    <Button text="Add" fx:id="addProduct" onAction="#handleAddProducts" alignment="BASELINE_RIGHT">
+                    <Button text="Add" fx:id="addProduct" onAction="#handleAddParts" alignment="BASELINE_RIGHT">
                         <padding><Insets top="5" right="5" bottom="5" left="5"/></padding>
                     </Button>
                 </HBox>
@@ -121,10 +121,10 @@
                     <TableView style="-fx-background-color: #808080;" fx:id="productPartTable">
 
                         <columns >
-                            <TableColumn text="Part ID" style="-fx-background-color: #202020;" fx:id="productPartIDColumn"/>
-                            <TableColumn text="Part Name" style="-fx-background-color: #202020;" fx:id="productPartNameColumn"/>
-                            <TableColumn text="Inventory Level" style="-fx-background-color: #202020;" fx:id="productPartInventoryColumn"/>
-                            <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #202020;" fx:id="productPartCostColumn"/>
+                            <TableColumn text="Part ID" style="-fx-background-color: #545454;" fx:id="productPartIDColumn"/>
+                            <TableColumn text="Part Name" style="-fx-background-color: #545454;" fx:id="productPartNameColumn"/>
+                            <TableColumn text="Inventory Level" style="-fx-background-color: #545454;" fx:id="productPartInventoryColumn"/>
+                            <TableColumn text="Price/ Cost per Unit" style="-fx-background-color: #545454;" fx:id="productPartCostColumn"/>
                         </columns>
                     </TableView>
                 </HBox>
