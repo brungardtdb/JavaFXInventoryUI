@@ -3,35 +3,30 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import InventoryAPI.Inventory;
-import InventoryAPI.Test.InventoryTest;
-import InventoryAPI.Part;
-import InventoryAPI.Product;
-import InventoryAPI.InHouse;
-import InventoryAPI.Outsourced;
-import javafx.collections.ObservableList;
-
+/**
+ * Main class and main method to start the application.
+ * @author David Brungardt
+ */
 public class Main extends Application{
 
+
     @Override
+    /**
+     * Method that starts main window for the application.
+     * @param stage Takes stage used for main form as an arguement.
+     * */
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/UI/Views/main.fxml"));
-        stage.setTitle("Inventory.Inventory Manager");
+        stage.setTitle("Inventory Manager");
         stage.setScene(new Scene(root,900,650));
         stage.show();
     }
 
+    /**
+     * Main method that launches the application
+     * @param args Arguments for main method.
+     * */
     public static void main(String[] args) {
         launch(args);
     }
 }
-
-// //FOR TESTING INVENTORY
-//public class Main
-//{
-//
-//    public static void main(String[] args)
-//    {
-//        InventoryTest inventoryTest = new InventoryTest();
-//    }
-//}

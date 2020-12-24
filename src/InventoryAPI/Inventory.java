@@ -1,10 +1,10 @@
 package InventoryAPI;
-
+import InventoryAPI.AbstractClasses.Part;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- *
+ * This is the inventory class that handles all of the inventory management logic for our inventory API.
  * @author David Brungardt
  */
 public class Inventory {
@@ -13,7 +13,8 @@ public class Inventory {
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
     /**
-     * @param newPart the part we are adding to the inventory
+     * Method used to add parts to the inventory.
+     * @param newPart The part we are adding to the inventory.
      */
     public static void addPart(Part newPart)
     {
@@ -21,7 +22,8 @@ public class Inventory {
     }
 
     /**
-     * @param newProduct the product we are adding to the inventory
+     * Method used to add products to the inventory.
+     * @param newProduct The product we are adding to the inventory.
      */
     public static void addProduct(Product newProduct)
     {
@@ -29,8 +31,9 @@ public class Inventory {
     }
 
     /**
-     * @param partID the ID for the part we are trying to return
-     * @return the part if found
+     * Method used to look up parts in inventory based on part ID.
+     * @param partID The ID for the part we are trying to return.
+     * @return The part if found.
      */
     public static Part lookupPart(int partID)
     {
@@ -44,8 +47,9 @@ public class Inventory {
     }
 
     /**
-     * @param productID the ID for the product we are trying to return
-     * @return the product if found
+     * Method used to look up products in inventory based on product ID.
+     * @param productID The ID for the product we are trying to return.
+     * @return The product if found.
      */
     public static Product lookupProduct(int productID)
     {
@@ -59,8 +63,9 @@ public class Inventory {
     }
 
     /**
-     * @param partName name for the part(s) we are trying to return
-     * @return the part(s) if found
+     * Method used to look up part(s) in inventory based on part ID.
+     * @param partName Name for the part(s) we are trying to return.
+     * @return The part(s) if found.
      */
     public static ObservableList<Part> lookupPart(String partName)
     {
@@ -75,8 +80,9 @@ public class Inventory {
     }
 
     /**
-     * @param productName name for the product(s) we are trying to return
-     * @return the product(s) if found
+     * Method used to look up product(s) in inventory based on product ID.
+     * @param productName Name for the product(s) we are trying to return.
+     * @return The product(s) if found.
      */
     public static ObservableList<Product> lookupProduct(String productName)
     {
@@ -91,9 +97,9 @@ public class Inventory {
     }
 
     /**
-     * @param index position of part we wish to update in list
-     * @param newPart the updated part object we are passing into the list
-     * replaces a part in the list with a new part object at specified index
+     * Method for updating parts in the inventory given an index and part to insert into index location.
+     * @param index Position of part we wish to update in list.
+     * @param newPart The updated part object we are passing into the list.
      */
     public static void  updatePart(int index, Part newPart)
     {
@@ -108,9 +114,9 @@ public class Inventory {
     }
 
     /**
-     * @param index position of product we wish to update in list
-     * @param newProduct the updated product object we are passing into the list
-     * replaces a product in the list with a new product object at specified index
+     * Method for updating products in the inventory given an index and product to insert into index location.
+     * @param index Position of product we wish to update in list.
+     * @param newProduct The updated product object we are passing into the list.
      */
     public static void  updateProduct(int index, Product newProduct)
     {
@@ -125,8 +131,9 @@ public class Inventory {
     }
 
     /**
-     * @param selectedPart the part(s) we are trying to delete from the inventory
-     * @return true if part was successfully deleted, false if part was not deleted or is not in inventory
+     * Method for deleting a part from the inventory given a part to delete.
+     * @param selectedPart The part(s) we are trying to delete from the inventory.
+     * @return True if part was successfully deleted, false if part was not deleted or is not in inventory.
      */
     public static boolean deletePart(Part selectedPart)
     {
@@ -138,8 +145,9 @@ public class Inventory {
     }
 
     /**
-     * @param selectedProduct the product(s) we are trying to delete from the inventory
-     * @return true if product was successfully deleted, false if product was not deleted or is not in inventory
+     * Method for deleting a product from the inventory given a product to delete.
+     * @param selectedProduct The product(s) we are trying to delete from the inventory.
+     * @return True if product was successfully deleted, false if product was not deleted or is not in inventory.
      */
     public static boolean deleteProduct(Product selectedProduct)
     {
@@ -151,7 +159,8 @@ public class Inventory {
     }
 
     /**
-     * @return all parts in inventory
+     * Method for returning all parts currently in inventory.
+     * @return All parts in inventory.
      */
     public static ObservableList<Part> getAllParts()
     {
@@ -159,7 +168,8 @@ public class Inventory {
     }
 
     /**
-     * @return all products in inventory
+     * Method for returning all products currently in inventory.
+     * @return All products in inventory.
      */
     public static ObservableList<Product> getAllProducts()
     {

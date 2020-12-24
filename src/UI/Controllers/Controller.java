@@ -1,6 +1,6 @@
 package UI.Controllers;
 import InventoryAPI.Inventory;
-import InventoryAPI.Part;
+import InventoryAPI.AbstractClasses.Part;
 import InventoryAPI.Product;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,9 +17,8 @@ import javafx.scene.input.*;
 import java.io.IOException;
 
 /**
- *
+ * The controller for the main inventory control form.
  * @author David Brungardt
- * controller for the main inventory control form
  */
 public class Controller {
 
@@ -43,13 +42,13 @@ public class Controller {
     //region parts
 
     /**
-     * handles adding parts to the inventory
-     * opens the add part form and adds parts to the part table
+     * Handles adding parts to the inventory.
+     * Opens the add part form and adds parts to the part table.
      * I think a compatible feature that would be suitable for this application would be to add
      * some kind of database so the data is persistent. I was honestly a little disappointed that I
      * wasn't going to be connecting to any kind of SQL or NOSQL database to store these inventory objects.
      * I don't think it would be very difficult to implement this, you could just add some CRUD methods to handle
-     * the data in the database and make calls to those methods when you are updating the tables. 
+     * the data in the database and make calls to those methods when you are updating the tables.
      * */
     public void handleAddParts()
     {
@@ -77,8 +76,8 @@ public class Controller {
     }
 
     /**
-     * handles modifying parts in the inventory
-     * opens the modify part form, and loads the selected part
+     * Handles modifying parts in the inventory.
+     * Opens the modify part form, and loads the selected part.
      * */
     public void handleModifyParts()
     {
@@ -120,8 +119,8 @@ public class Controller {
     }
 
     /**
-     * handles deleting parts from the inventory and removing parts from the part table
-     * asks for confirmation before removing part
+     * Handles deleting parts from the inventory and removing parts from the part table.
+     * Asks for confirmation before removing part.
      * */
     public void handleDeleteParts()
     {
@@ -158,7 +157,7 @@ public class Controller {
     }
 
     /**
-     * searches for parts in the part table and selects part(s) if found.
+     * Searches for parts in the part table and selects part(s) if found.
      * */
     public void handleSearchParts()
     {
@@ -209,7 +208,7 @@ public class Controller {
     }
 
     /**
-     * updates parts in the part table and removes row selection
+     * Updates parts in the part table and removes row selection.
      * The bug that I spent the most time tracking down in this entire application is contained inside of this method.
      * Originally when I was trying to clear the table row selection, I made the call "partTable.getSelectionModel().select(null);",
      * what was probably the most confusing about this is the fact that it worked in some instances; however, I would later discover
@@ -233,7 +232,8 @@ public class Controller {
     }
 
     /**
-     * @return selected part in part table
+     * This method gets the selected part from the table on the form.
+     * @return Selected part in part table (if any).
      * */
     public Part getPartToModify()
     {
@@ -249,8 +249,8 @@ public class Controller {
     //region products
 
     /**
-     * handles adding products to the inventory
-     * opens the add product form and adds products to the product table
+     * Handles adding products to the inventory.
+     * Opens the add product form and adds products to the product table.
      * */
     public void handleAddProducts()
     {
@@ -280,8 +280,8 @@ public class Controller {
     }
 
     /**
-     * handles modifying products in the inventory
-     * opens the modify product form, and loads the selected part
+     * Handles modifying products in the inventory.
+     * Opens the modify product form, and loads the selected part.
      * */
     public void handleModifyProducts()
     {
@@ -323,8 +323,8 @@ public class Controller {
     }
 
     /**
-     * handles deleting products from the inventory and removing products from the product table
-     * asks for confirmation before deleting the product
+     * Handles deleting products from the inventory and removing products from the product table.
+     * Asks for confirmation before deleting the product.
      * */
     public void handleDeleteProducts()
     {
@@ -376,7 +376,7 @@ public class Controller {
     }
 
     /**
-     * searches for products in the product table and selects product(s) if found.
+     * Searches for products in the product table and selects product(s) if found.
      * */
     public void handleSearchProducts()
     {
@@ -427,7 +427,7 @@ public class Controller {
     }
 
     /**
-     * updates products in the product table and removes row selection
+     * Updates products in the product table and removes row selection.
      * */
     public void updateProducts()
     {
@@ -446,7 +446,8 @@ public class Controller {
     }
 
     /**
-     * @return selected product in product table
+     * This method gets the selected product from the table on the form.
+     * @return Selected product in product table (if any).
      * */
     public Product getProductToModify()
     {
@@ -462,7 +463,7 @@ public class Controller {
     //region form controls
 
     /**
-     * handles closing of the inventory management system window
+     * Handles closing of the inventory management system window.
      * */
     @FXML  void handleExitForm()
     {
@@ -471,7 +472,8 @@ public class Controller {
     }
 
     /**
-     * removes selection from part tables when form is clicked
+     * Removes selection from part tables when form is clicked.
+     * @param event The mouse click event.
      * */
     @FXML public void mainFormClicked(MouseEvent event)
     {

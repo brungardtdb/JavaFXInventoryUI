@@ -1,10 +1,10 @@
 package InventoryAPI;
-
+import InventoryAPI.AbstractClasses.Part;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- *
+ * This is the class for product objects in our inventory.
  * @author David Brungardt
  */
 public class Product
@@ -17,6 +17,15 @@ public class Product
     private int min;
     private int max;
 
+    /**
+     * Constructor used to initialize product objects.
+     * @param id Product ID.
+     * @param name Product name.
+     * @param price Product price.
+     * @param stock Product inventory #.
+     * @param min Product inventory min.
+     * @param max Product inventory max.
+     * */
     public Product(int id, String name, double price,
                    int stock, int min, int max)
     {
@@ -29,7 +38,8 @@ public class Product
     }
 
     /**
-     * @param id the ID for the product
+     * Method used to assign an ID for the product.
+     * @param id The ID for the product.
      */
     public void setId(int id)
     {
@@ -37,7 +47,8 @@ public class Product
     }
 
     /**
-     * @param name the name for the product
+     * Method used to assign a name to the product.
+     * @param name The name for the product.
      */
     public void setName(String name)
     {
@@ -45,7 +56,8 @@ public class Product
     }
 
     /**
-     * @param price the product price
+     * Method used to assign a price to the product.
+     * @param price The product price.
      */
     public void setPrice(double price)
     {
@@ -53,7 +65,8 @@ public class Product
     }
 
     /**
-     * @param stock the product stock number
+     * Method used to assign a stock or inventory number to the product.
+     * @param stock The product stock or inventory number.
      */
     public void setStock(int stock)
     {
@@ -61,7 +74,8 @@ public class Product
     }
 
     /**
-     * @param min the product minimum
+     * Method used to assign inventory minimum to the product.
+     * @param min The product minimum.
      */
     public void setMin(int min)
     {
@@ -69,7 +83,8 @@ public class Product
     }
 
     /**
-     * @param max the product maximum
+     * Method used to assign inventory maximum to the product.
+     * @param max The product maximum.
      */
     public void setMax(int max)
     {
@@ -77,7 +92,8 @@ public class Product
     }
 
     /**
-     * @return the product ID
+     * Method used to retrieve the product ID.
+     * @return The product ID.
      */
     public int getId()
     {
@@ -85,7 +101,8 @@ public class Product
     }
 
     /**
-     * @return the product name
+     * Method used to retrieve the product name.
+     * @return The product name.
      */
     public String getName()
     {
@@ -93,7 +110,8 @@ public class Product
     }
 
     /**
-     * @return the price of the product
+     * Method used to retrieve the price or cost of product.
+     * @return The price of the product.
      */
     public double getPrice()
     {
@@ -101,7 +119,8 @@ public class Product
     }
 
     /**
-     * @return the product stock number
+     * Method used to retrieve the inventory or stock number of the product.
+     * @return The product stock number.
      */
     public int getStock()
     {
@@ -109,7 +128,8 @@ public class Product
     }
 
     /**
-     * @return the product minimum
+     * Method used to retrieve the product inventory minimum.
+     * @return The product minimum.
      */
     public int getMin()
     {
@@ -117,7 +137,8 @@ public class Product
     }
 
     /**
-     * @return the product maximum
+     * Method used to retrieve the product inventory maximum.
+     * @return The product maximum.
      */
     public int getMax()
     {
@@ -125,7 +146,8 @@ public class Product
     }
 
     /**
-     * currently adds part to list of associated parts
+     * Method used to associate part objects with the product (adds them to observable list).
+     * @param part Associated part we are adding to product.
      */
     public void addAssociatedPart( Part part)
     {
@@ -133,6 +155,8 @@ public class Product
     }
 
     /**
+     * Method used to remove part object association with product (removes parts from observable list).
+     * @param selectedAssociatedPart Part we are deleting from product.
      * @return true if the part has successfully been deleted
      */
     public boolean deleteAssociatedPart(Part selectedAssociatedPart)
@@ -141,7 +165,8 @@ public class Product
     }
 
     /**
-     * @return a list of associated parts
+     * Method used to retrieve all part objects that are associated with the product.
+     * @return A list of associated parts.
      */
     public ObservableList<Part> getAllAssociatedParts()
     {

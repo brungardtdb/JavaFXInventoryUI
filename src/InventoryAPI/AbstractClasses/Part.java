@@ -1,4 +1,7 @@
-package InventoryAPI;
+package InventoryAPI.AbstractClasses;
+/**
+ * Supplied class Part.java
+ */
 
 /**
  *

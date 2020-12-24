@@ -1,6 +1,6 @@
 package UI.Controllers;
 import InventoryAPI.Inventory;
-import InventoryAPI.Part;
+import InventoryAPI.AbstractClasses.Part;
 import InventoryAPI.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,9 +11,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- *
+ * This is the controller for the product form.
  * @author David Brungardt
- * controller for the product form
  */
 public class ProductController {
 
@@ -52,7 +51,8 @@ public class ProductController {
     //region product logic
 
     /**
-     * @param inventory the inventory we are adding products to (static from main form)
+     * This method passes the inventory from the main form into the controller for the part form.
+     * @param inventory The inventory we are adding products to (static from main form).
      */
     public void setInventory(Inventory inventory)
     {
@@ -61,7 +61,19 @@ public class ProductController {
     }
 
     /**
-     * @param product the product we are going to modify (only used when modifying product)
+     * This method passes the controller from the main form into the controller for the product form.
+     * Passing the main form controller into this controller will allow us to update tables in the main form.
+     * @param controller The main form's controller, used to pass back information.
+     */
+    public void setHomeController(Controller controller)
+    {
+        // assign home controller so we can interact with main form
+        this.homeController = controller;
+    }
+
+    /**
+     * If we are modifying a product, this method is used to pass that product into the controller.
+     * @param product The product we are going to modify (only used when modifying product).
      */
     public void setProductToModify(Product product)
     {
@@ -80,16 +92,8 @@ public class ProductController {
     }
 
     /**
-     * @param controller the main form's controller, used to pass back information
-     */
-    public void setHomeController(Controller controller)
-    {
-        // assign home controller so we can interact with main form
-        this.homeController = controller;
-    }
-
-    /**
-     * @param modifyProduct a boolean value that indicates if we are modifying products, (false for adding new product)
+     * Method responsible for defining whether or not we are adding a new product or modifying an existing product.
+     * @param modifyProduct A boolean value that indicates if we are modifying products, (false for adding new product).
      */
     public void setModifyProducts(boolean modifyProduct)
     {
@@ -108,8 +112,8 @@ public class ProductController {
     }
 
     /**
-     * method used for validating input on the form
-     * @return true if form input is valid, false if input is invalid
+     * Method used for validating input on the form.
+     * @return True if form input is valid, false if input is invalid.
      * */
     private boolean inputIsValid()
     {
@@ -154,8 +158,9 @@ public class ProductController {
     }
 
     /**
-     * method used for validating inventory data
-     * @return true if form inventory data is valid, false if inventory data is invalid
+     * Method used for validating inventory data.
+     * @param inputIsValid A boolean indicating if the form input was valid.
+     * @return True if form inventory data is valid, false if inventory data is invalid.
      * */
     private boolean inventoryIsValid(boolean inputIsValid)
     {
@@ -188,8 +193,8 @@ public class ProductController {
     }
 
     /**
-     * Searches for part in table
-     * If ID cannot be parsed, searches for part by name
+     * Searches for part in table.
+     * If ID cannot be parsed, searches for part by name.
      * */
     public void handleSearchParts()
     {
@@ -241,7 +246,7 @@ public class ProductController {
     }
 
     /**
-     * updates parts in table based on parts in inventory
+     * Updates parts in table based on parts in inventory.
      * */
     public void updateParts()
     {
@@ -256,7 +261,7 @@ public class ProductController {
     }
 
     /**
-     * updates parts in table based on parts associated with product
+     * Updates parts in table based on parts associated with product.
      * */
     public void updateAssociatedParts()
     {
@@ -269,7 +274,7 @@ public class ProductController {
     }
 
     /**
-     * adds selected part to product and updates table for associated parts
+     * Adds selected part to product and updates table for associated parts.
      * */
     public void handleAddParts()
     {
@@ -286,8 +291,9 @@ public class ProductController {
     }
 
     /**
-     * @param tableView takes in a tableview for input, returns selected part (if any)
-     * @return returns the selected part if one is selected, otherwise returns null
+     * This method gets the selected part from the table on the form.
+     * @param tableView Takes in a tableview for input, returns selected part (if any).
+     * @return Returns the selected part if one is selected, otherwise returns null.
      * */
     public Part getPartToModify(TableView tableView)
     {
@@ -299,8 +305,8 @@ public class ProductController {
     }
 
     /**
-     * removes part association with product and removes from product part table
-     * asks for confirmation before removing part
+     * Removes part association with product and removes from product part table.
+     * Asks for confirmation before removing part.
      * */
     public void handleRemoveAssociatedPart()
     {
@@ -343,7 +349,7 @@ public class ProductController {
     }
 
     /**
-     * saves changes to the product, closes product form and updates product table in main form
+     * Saves changes to the product, closes product form and updates product table in main form.
      * */
     public void handleSaveProduct()
     {
@@ -393,7 +399,7 @@ public class ProductController {
     //region form controls
 
     /**
-     * handles cancellation of product creation by closing the form
+     * Handles cancellation of product creation by closing the form.
      * */
     @FXML void handleCancel()
     {
@@ -402,8 +408,8 @@ public class ProductController {
     }
 
     /**
-     * @param event takes in a mouse click event
-     * removes selection from part tables when form is clicked
+     * Removes selection from part tables when form is clicked.
+     * @param event Takes in a mouse click event.
      * */
     @FXML private void handleOnMouseClicked(MouseEvent event)
     {

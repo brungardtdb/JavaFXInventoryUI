@@ -94,7 +94,7 @@
                     </Button>
                 </HBox>
 
-                <!--InventoryAPI.Part Table to choose from-->
+                <!--InventoryAPI.AbstractClasses.Part Table to choose from-->
                 <HBox>
                     <TableView style="-fx-background-color: #808080;" fx:id="partTable">
 
@@ -116,7 +116,7 @@
                     </Button>
                 </HBox>
 
-                <!--InventoryAPI.Part Table to with associated data-->
+                <!--InventoryAPI.AbstractClasses.Part Table to with associated data-->
                 <HBox>
                     <TableView style="-fx-background-color: #808080;" fx:id="productPartTable">
 

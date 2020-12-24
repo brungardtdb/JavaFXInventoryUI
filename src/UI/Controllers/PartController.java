@@ -1,16 +1,15 @@
 package UI.Controllers;
 import InventoryAPI.InHouse;
 import InventoryAPI.Outsourced;
-import InventoryAPI.Part;
+import InventoryAPI.AbstractClasses.Part;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import InventoryAPI.Inventory;
 import javafx.stage.Stage;
 
 /**
- *
+ * This is the controller for the part form.
  * @author David Brungardt
- * controller for the part form
  */
 public class PartController {
 
@@ -43,7 +42,8 @@ public class PartController {
 
     //region part logic
     /**
-     * @param inventory the inventory we are adding parts to (static from main form)
+     * This method passes the inventory from the main form into the controller for the part form.
+     * @param inventory The inventory we are adding parts to (static from main form).
      */
     public void setInventory(Inventory inventory)
     {
@@ -52,7 +52,9 @@ public class PartController {
     }
 
     /**
-     * @param controller the main form's controller, used to pass back information
+     * This method passes the controller from the main form into the controller for the part form.
+     * Passing the main form controller into this controller will allow us to update tables in the main form.
+     * @param controller The main form's controller, used to pass back information.
      */
     public void setHomeController(Controller controller)
     {
@@ -61,7 +63,8 @@ public class PartController {
     }
 
     /**
-     * @param part the part we are modifying if we are modifying a part (as opposed to adding a new part)
+     * If we are modifying a part, this method is used to pass that part into the controller.
+     * @param part The part we are modifying if we are modifying a part (as opposed to adding a new part).
      */
     public void setPartToModify(Part part)
     {
@@ -95,8 +98,8 @@ public class PartController {
     }
 
     /**
-     * checks if input is valid and saves the part to the inventory
-     * this is used for adding new parts as well as modifying existing parts
+     * Checks if input is valid and saves the part to the inventory.
+     * This is used for adding new parts as well as modifying existing parts.
      * */
     public void handleSavePart()
     {
@@ -145,8 +148,8 @@ public class PartController {
     }
 
     /**
-     * method used for validating input on the form
-     * @return true if form input is valid, false if input is invalid
+     * Method used for validating input on the form.
+     * @return True if form input is valid, false if input is invalid.
      * */
     private boolean inputIsValid()
     {
@@ -210,8 +213,9 @@ public class PartController {
     }
 
     /**
-     * method used for validating inventory data
-     * @return true if form inventory data is valid, false if inventory data is invalid
+     * Method used for validating inventory data.
+     * @param inputIsValid A boolean indicating if the form input was valid.
+     * @return True if form inventory data is valid, false if inventory data is invalid.
      * */
     private boolean inventoryIsValid(boolean inputIsValid)
     {
@@ -244,8 +248,8 @@ public class PartController {
     }
 
     /**
-     * method for the "cancel" button on the form
-     * responsible for closing the form when user cancels a part entry/modification
+     * Method for the "cancel" button on the form.
+     * Responsible for closing the form when user cancels a part entry/modification.
      * */
     @FXML public void handleCancelPart()
     {
@@ -255,7 +259,8 @@ public class PartController {
     }
 
     /**
-     * @param modifyParts a boolean value that indicates if we are modifying parts, (false for adding new parts)
+     * Method responsible for defining whether or not we are adding a new part or modifying an existing part.
+     * @param modifyParts A boolean value that indicates if we are modifying parts, (false for adding new parts).
      */
     public void setModifyParts(boolean modifyParts)
     {
@@ -280,8 +285,8 @@ public class PartController {
     //region radio buttons
 
     /**
-     * checks to see if in-house radio button is selected
-     * updates form based on which radio button is selected
+     * Checks to see if in-house radio button is selected.
+     * Updates form based on which radio button is selected.
      * */
     public void inHouseChecked()
     {
@@ -293,8 +298,8 @@ public class PartController {
     }
 
     /**
-     * checks to see if outsourced radio button is selected
-     * updates form based on which radio button is selected
+     * Checks to see if outsourced radio button is selected.
+     * Updates form based on which radio button is selected.
      * */
     public void outsourcedChecked()
     {
