@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 /**
  *
  * @author David Brungardt
+ * controller for the product form
  */
 public class ProductController {
 
@@ -299,6 +300,7 @@ public class ProductController {
 
     /**
      * removes part association with product and removes from product part table
+     * asks for confirmation before removing part
      * */
     public void handleRemoveAssociatedPart()
     {
@@ -306,17 +308,27 @@ public class ProductController {
 
         if (partToRemove != null)
         {
-            this.associatedParts.remove(partToRemove);
-            updateAssociatedParts();
-            // Unselect parts in table after part is deleted
-            partTable.getSelectionModel().clearSelection();
-            productPartTable.getSelectionModel().clearSelection();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("The associated part has been removed!");
-            alert.setHeaderText("The associated part has been removed!");
-            alert.setContentText("The associated part has been removed part table!");
-            alert.show();
+            // Ask user for confirmation to remove the part from associated parts
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Delete Confirmation");
+            alert.setContentText("Are you sure you want to remove this part?");
+            ButtonType confirm = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+            ButtonType deny = new ButtonType("No", ButtonBar.ButtonData.NO);
+            ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(confirm, deny, cancel);
+            alert.showAndWait().ifPresent(type ->{
+                if (type == confirm)
+                {
+                    // If user confirms, remove part
+                    this.associatedParts.remove(partToRemove);
+                    updateAssociatedParts();
+                    // Unselect parts in table after part is deleted
+                    partTable.getSelectionModel().clearSelection();
+                    productPartTable.getSelectionModel().clearSelection();
+                }
+            });
         }
         else
         {
@@ -326,6 +338,8 @@ public class ProductController {
             alert.setContentText("Please select an associated part to remove from the part table!");
             alert.show();
         }
+        this.partTable.getSelectionModel().clearSelection();
+        this.productPartTable.getSelectionModel().clearSelection();
     }
 
     /**

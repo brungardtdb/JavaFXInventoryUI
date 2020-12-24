@@ -2,7 +2,6 @@ package UI.Controllers;
 import InventoryAPI.Inventory;
 import InventoryAPI.Part;
 import InventoryAPI.Product;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +16,11 @@ import javafx.stage.StageStyle;
 import javafx.scene.input.*;
 import java.io.IOException;
 
+/**
+ *
+ * @author David Brungardt
+ * controller for the main inventory control form
+ */
 public class Controller {
 
     private static Inventory inventory = new Inventory();
@@ -41,6 +45,11 @@ public class Controller {
     /**
      * handles adding parts to the inventory
      * opens the add part form and adds parts to the part table
+     * I think a compatible feature that would be suitable for this application would be to add
+     * some kind of database so the data is persistent. I was honestly a little disappointed that I
+     * wasn't going to be connecting to any kind of SQL or NOSQL database to store these inventory objects.
+     * I don't think it would be very difficult to implement this, you could just add some CRUD methods to handle
+     * the data in the database and make calls to those methods when you are updating the tables. 
      * */
     public void handleAddParts()
     {
@@ -112,20 +121,30 @@ public class Controller {
 
     /**
      * handles deleting parts from the inventory and removing parts from the part table
+     * asks for confirmation before removing part
      * */
     public void handleDeleteParts()
     {
         Part partToDelete = getPartToModify();
 
         if (partToDelete != null) {
-            inventory.deletePart(partToDelete);
-            updateParts();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("The part has been deleted!");
-            alert.setHeaderText("The part has been deleted!");
-            alert.setContentText("The part has been removed from the part table!");
-            alert.show();
+            // Ask user for confirmation to remove the product from part table
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Delete Confirmation");
+            alert.setContentText("Are you sure you want to delete this part?");
+            ButtonType confirm = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+            ButtonType deny = new ButtonType("No", ButtonBar.ButtonData.NO);
+            ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(confirm, deny, cancel);
+            alert.showAndWait().ifPresent(type ->{
+                if (type == confirm)
+                {
+                    inventory.deletePart(partToDelete);
+                    updateParts();
+                }
+            });
 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -191,6 +210,11 @@ public class Controller {
 
     /**
      * updates parts in the part table and removes row selection
+     * The bug that I spent the most time tracking down in this entire application is contained inside of this method.
+     * Originally when I was trying to clear the table row selection, I made the call "partTable.getSelectionModel().select(null);",
+     * what was probably the most confusing about this is the fact that it worked in some instances; however, I would later discover
+     * that this was not a reliable way to clear the selected table rows and often it wouldn't work. Once I replaced that call with
+     * "partTable.getSelectionModel().clearSelection();" things went much more smoothly.
      * */
     public void updateParts()
     {
@@ -300,6 +324,7 @@ public class Controller {
 
     /**
      * handles deleting products from the inventory and removing products from the product table
+     * asks for confirmation before deleting the product
      * */
     public void handleDeleteProducts()
     {
@@ -307,29 +332,37 @@ public class Controller {
 
         if (productToDelete != null)
         {
-            // User cannot delete products with associated parts
-            if (productToDelete.getAllAssociatedParts().size() > 0)
-            {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Action is Forbidden!");
-                alert.setHeaderText("Action is Forbidden!");
-                alert.setContentText("Products with associated parts cannot be deleted!\n  " +
-                        "Please remove associated parts from product and try again!");
-                alert.show();
-            }
-            else
-            {
-                inventory.deleteProduct(productToDelete);
-                updateProducts();
-                productTable.getSelectionModel().clearSelection();
-
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Product has been deleted!");
-                alert.setHeaderText("Product has been deleted!");
-                alert.setContentText("The product has been removed from the product table!");
-                alert.show();
-            }
-
+            // Ask user for confirmation to remove the product from product table
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Delete Confirmation");
+            alert.setContentText("Are you sure you want to delete this product?");
+            ButtonType confirm = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+            ButtonType deny = new ButtonType("No", ButtonBar.ButtonData.NO);
+            ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(confirm, deny, cancel);
+            alert.showAndWait().ifPresent(type ->{
+                if (type == confirm)
+                {
+                    // User cannot delete products with associated parts
+                    if (productToDelete.getAllAssociatedParts().size() > 0)
+                    {
+                        Alert alert2 = new Alert(Alert.AlertType.ERROR);
+                        alert2.setTitle("Action is Forbidden!");
+                        alert2.setHeaderText("Action is Forbidden!");
+                        alert2.setContentText("Products with associated parts cannot be deleted!\n  " +
+                                "Please remove associated parts from product and try again!");
+                        alert2.show();
+                    }
+                    else
+                    {
+                        // delete the product
+                        inventory.deleteProduct(productToDelete);
+                        updateProducts();
+                        productTable.getSelectionModel().clearSelection();
+                    }
+                }
+            });
         }
         else
         {
@@ -339,6 +372,7 @@ public class Controller {
             alert.setContentText("Please select a product to delete from the part table!");
             alert.show();
         }
+        this.productTable.getSelectionModel().clearSelection();
     }
 
     /**

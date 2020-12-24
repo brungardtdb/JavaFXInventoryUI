@@ -3,16 +3,14 @@ import InventoryAPI.InHouse;
 import InventoryAPI.Outsourced;
 import InventoryAPI.Part;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import InventoryAPI.Inventory;
 import javafx.stage.Stage;
-import javax.sound.midi.ControllerEventListener;
 
 /**
  *
  * @author David Brungardt
+ * controller for the part form
  */
 public class PartController {
 
