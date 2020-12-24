@@ -48,6 +48,8 @@ public class ProductController {
     private boolean modifyProduct;
     private Controller homeController;
 
+    //region product logic
+
     /**
      * @param inventory the inventory we are adding products to (static from main form)
      */
@@ -68,6 +70,11 @@ public class ProductController {
             this.associatedParts = product.getAllAssociatedParts();
             updateAssociatedParts();
             this.idTxt.setText(String.valueOf(this.product.getId()));
+            this.nameTxt.setText(this.product.getName());
+            this.inventoryTxt.setText(String.valueOf(this.product.getStock()));
+            this.minTxt.setText(String.valueOf(this.product.getMin()));
+            this.maxTxt.setText(String.valueOf(this.product.getMax()));
+            this.priceCostTxt.setText(String.valueOf(this.product.getPrice()));
         }
     }
 
@@ -146,6 +153,40 @@ public class ProductController {
     }
 
     /**
+     * method used for validating inventory data
+     * @return true if form inventory data is valid, false if inventory data is invalid
+     * */
+    private boolean inventoryIsValid(boolean inputIsValid)
+    {
+        boolean output = true;
+
+        if (inputIsValid)
+        {
+            // check to see that min is less than max and inventory is between min and max
+            if ((productMin > productMax) ||
+                    (productStock < productMin) ||
+                    (productStock > productMax))
+            {
+                output = false;
+                // Alert user that there is a problem with the inventory data
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Inventory Data Invalid!");
+                alert.setHeaderText("Inventory Data Invalid!");
+                alert.setContentText("Please check inventory data!\n" +
+                        "Min must be less than Max!\n" +
+                        "Inv must be between Min and Max!");
+                alert.show();
+            }
+
+        }
+        else
+        {
+            output = false;
+        }
+        return  output;
+    }
+
+    /**
      * Searches for part in table
      * If ID cannot be parsed, searches for part by name
      * */
@@ -156,19 +197,45 @@ public class ProductController {
         ObservableList<Part> searchedParts;
         if (!partSearchTextField.getText().isEmpty())
         {
+            // clear any selected parts in table
+            partTable.getSelectionModel().clearSelection();
+
             try {
                 // First try to search for part ID
                 searchPartID = Integer.parseInt(partSearchTextField.getText());
                 searchedPart = this.inventory.lookupPart(searchPartID);
-                partTable.getSelectionModel().select(searchedPart);
+                if (searchedPart != null)
+                    partTable.getSelectionModel().select(searchedPart);
+                else // if ID parsed and not found
+                    throw new Exception("Item not found");
+                
             } catch (Exception e) {
                 // If ID cannot be parsed, try to search by name
                 searchedParts = this.inventory.lookupPart(partSearchTextField.getText());
-                searchedParts.forEach((part -> {
-                    partTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-                    partTable.getSelectionModel().select(part);
-                }));
+
+                if (searchedParts != null && searchedParts.size() > 0)
+                {
+                    // If part search yields results
+                    searchedParts.forEach((part -> {
+                        partTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+                        partTable.getSelectionModel().select(part);
+                    }));
+                }
+                else
+                {
+                    // Alert user that no part was found
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("No part was found!");
+                    alert.setHeaderText("No part was found!");
+                    alert.setContentText("Your search returned no results.\n" +
+                            "Please enter the part ID or part name and try again.");
+                    alert.show();
+                }
             }
+        }
+        else
+        {
+            partTable.getSelectionModel().clearSelection();
         }
     }
 
@@ -212,8 +279,8 @@ public class ProductController {
             this.associatedParts.add(associatedPart);
             updateAssociatedParts();
             // Unselect parts in table after part is added
-            partTable.getSelectionModel().select(null);
-            productPartTable.getSelectionModel().select(null);
+            partTable.getSelectionModel().clearSelection();
+            productPartTable.getSelectionModel().clearSelection();
         }
     }
 
@@ -242,8 +309,22 @@ public class ProductController {
             this.associatedParts.remove(partToRemove);
             updateAssociatedParts();
             // Unselect parts in table after part is deleted
-            partTable.getSelectionModel().select(null);
-            productPartTable.getSelectionModel().select(null);
+            partTable.getSelectionModel().clearSelection();
+            productPartTable.getSelectionModel().clearSelection();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("The associated part has been removed!");
+            alert.setHeaderText("The associated part has been removed!");
+            alert.setContentText("The associated part has been removed part table!");
+            alert.show();
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Input Invalid");
+            alert.setHeaderText("No part was selected!");
+            alert.setContentText("Please select an associated part to remove from the part table!");
+            alert.show();
         }
     }
 
@@ -254,7 +335,7 @@ public class ProductController {
     {
         Product newProduct;
 
-        if (inputIsValid())
+        if (inventoryIsValid(inputIsValid()))
         {
             if (modifyProduct)
             {
@@ -278,11 +359,24 @@ public class ProductController {
                 }));
                 this.inventory.addProduct(newProduct);
             }
+            this.homeController.updateProducts();
+            handleCancel();
         }
-
-        this.homeController.updateProducts();
-        handleCancel();
+        else
+        {
+            // if input is invalid, alert user
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Input Invalid");
+            alert.setHeaderText("Input was Invalid!");
+            alert.setContentText("Please enter valid product attributes." +
+                    "\nPlease check your input and try again!");
+            alert.show();
+        }
     }
+
+    //endregion
+
+    //region form controls
 
     /**
      * handles cancellation of product creation by closing the form
@@ -303,4 +397,6 @@ public class ProductController {
         partTable.getSelectionModel().clearSelection();
         productPartTable.getSelectionModel().clearSelection();
     }
+
+    //endregion
 }

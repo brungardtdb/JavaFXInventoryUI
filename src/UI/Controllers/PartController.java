@@ -43,6 +43,7 @@ public class PartController {
     private Part returnPart;
     private Controller homeController;
 
+    //region part logic
     /**
      * @param inventory the inventory we are adding parts to (static from main form)
      */
@@ -71,9 +72,27 @@ public class PartController {
         // So users can pretty much change whatever they want
         if (modifyParts)
         {
+            // populate form with existing part data
             this.partToModify = part;
             this.partIndex = part.getId();
             idTxt.setText(String.valueOf(this.partToModify.getId()));
+            nameTxt.setText(this.partToModify.getName());
+            inventoryTxt.setText(String.valueOf(this.partToModify.getStock()));
+            minTxt.setText(String.valueOf(this.partToModify.getMin()));
+            maxTxt.setText(String.valueOf(this.partToModify.getMax()));
+            priceCostTxt.setText(String.valueOf(this.partToModify.getPrice()));
+
+            // try to parse machine ID, if this fails part is outsourced and we will use company name
+            try {
+                InHouse inHouse = (InHouse) this.inventory.lookupPart(this.partToModify.getId());
+                variableTxt.setText(String.valueOf(inHouse.getMachineId()));
+                isInHouse.setSelected(true);
+            } catch (Exception e) {
+                Outsourced outsourced = (Outsourced) this.inventory.lookupPart(this.partToModify.getId());
+                variableTxt.setText(outsourced.getCompanyName());
+                isOutsourced.setSelected(true);
+            }
+
         }
     }
 
@@ -84,7 +103,7 @@ public class PartController {
     public void handleSavePart()
     {
         // only create and modify parts if we have valid input
-        if (inputIsValid())
+        if (inventoryIsValid(inputIsValid()))
         {
             if (modifyParts)
             {
@@ -193,6 +212,40 @@ public class PartController {
     }
 
     /**
+     * method used for validating inventory data
+     * @return true if form inventory data is valid, false if inventory data is invalid
+     * */
+    private boolean inventoryIsValid(boolean inputIsValid)
+    {
+        boolean output = true;
+
+        if (inputIsValid)
+        {
+            // check to see that min is less than max and inventory is between min and max
+            if ((partMin > partMax) ||
+                    (partStock < partMin) ||
+                    (partStock > partMax))
+            {
+                output = false;
+                // Alert user that there is a problem with the inventory data
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Inventory Data Invalid!");
+                alert.setHeaderText("Inventory Data Invalid!");
+                alert.setContentText("Please check inventory data!\n" +
+                        "Min must be less than Max!\n" +
+                        "Inv must be between Min and Max!");
+                alert.show();
+            }
+
+        }
+        else
+        {
+            output = false;
+        }
+        return  output;
+    }
+
+    /**
      * method for the "cancel" button on the form
      * responsible for closing the form when user cancels a part entry/modification
      * */
@@ -224,6 +277,10 @@ public class PartController {
         variableLabel.setText("Machine ID");
     }
 
+    //endregion
+
+    //region radio buttons
+
     /**
      * checks to see if in-house radio button is selected
      * updates form based on which radio button is selected
@@ -249,4 +306,6 @@ public class PartController {
             variableLabel.setText("Company Name");
         }
     }
+
+    //endregion
 }
