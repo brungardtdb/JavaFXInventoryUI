@@ -1,0 +1,7 @@
+This is a desktop application that I created to learn more about OOP in Java as
+well as Java FX and FXML and the MVC pattern. This is an inventory management
+application, it is strictly a UI and the data is not persistent (no database or
+files, data lives and dies with the application). I used both in-line CSS and a
+referenced CSS file to style the skin of the application and all of the FXML was
+written by hand (did not use scene builder or any other tools). The part class
+was provided by a third party and intentionally does not have any javadoc comments.
